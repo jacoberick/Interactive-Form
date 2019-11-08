@@ -33,6 +33,20 @@ h1 {
 a {
   text-decoration: none;
 }
+#revFormDiv {
+  text-align: center;
+  padding: 15px;
+}
+
+#reviewForm {
+  color: red;
+  display: inline-block;
+}
+
+#reviewFormActivity {
+  color: red;
+  display: inline;
+}
 
 /* =================================
   Form Element Styles
