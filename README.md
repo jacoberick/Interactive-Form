@@ -1,2 +1,2 @@
 # Interactive-Form
-Treehouse Project 3
+An interactive form field using Javascript and jQuery.
