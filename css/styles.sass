@@ -1,0 +1,107 @@
+*
+  box-sizing: border-box
+
+.container
+  width: 100%
+  display: flex
+  font-family: 'Varela', sans-serif
+  height: 100vh
+  color: #312b39
+
+  .left
+    width: 50%
+    height: 100vh
+    overflow: hidden
+
+    .left--photo
+      width: 100%
+
+  .right
+    width: 50%
+    background-color: #fefefe
+    display: flex
+    align-items: center
+    flex-direction: column
+    padding: 2rem
+    overflow: auto
+
+    header
+      display: flex
+      align-items: center
+      flex-direction: column
+
+    .form
+      .fieldset
+        display: flex
+        flex-direction: column
+        margin-bottom: 2rem
+
+      .basic-container
+        label
+          margin-top: 1rem
+
+        .job-selector
+          margin-bottom: 1rem
+
+      .shirt-container
+        div
+          margin-top: 1rem
+
+          &:last-child
+            margin-bottom: 1rem
+
+      .activities
+        label
+          margin-top: 1rem
+
+        .total
+          margin: 1rem 0
+
+      .payment-container
+        label
+          margin-top: 1rem
+
+        .payment-label
+          margin-bottom: .5rem
+
+        div
+          margin-top: 1rem
+
+        .credit-card-details
+          display: flex
+          justify-content: space-around
+          margin-bottom: 1rem
+          margin-top: 0rem
+
+        .expiration-container
+          margin-bottom: 1rem
+          display: flex
+          flex-direction: column
+
+    .register-container
+      width: 100%
+      display: flex
+      justify-content: center
+
+      #register
+        background-color: #fefefe
+        width: 8rem
+        height: 3rem
+        border-radius: 5px
+        color: #312b39
+        border: 2px solid #312b39
+
+        &:hover
+          border-color: #febd47
+          transition: all .3s ease-out
+          color: #febd47
+
+
+
+
+
+// Helper Classes
+.strikethrough
+  text-decoration: line-through
+
+.req-form

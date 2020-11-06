@@ -26,7 +26,7 @@ $("#name").focus();
 
 // hides txt input for other selection, until 'other' is selected in the Job Role drop down menu
 $("#title")
-  .change(function() {
+  .change(function () {
     if (this.value == "other") {
       otherTxtInput.show();
     } else {
@@ -37,20 +37,17 @@ $("#title")
 
 //T-SHIRT INFO
 // function `showShirtSelection` takes the selected design and only shows shirts related to that design
-let showShirtSelection = shirtDesign => {
+let showShirtSelection = (shirtDesign) => {
   colorDropDown.removeAttr("disabled");
   allColorOptions.removeAttr("selected").hide();
   $("#defColTxt").remove();
-  shirtDesign
-    .show()
-    .eq(0)
-    .attr({ selected: true });
+  shirtDesign.show().eq(0).attr({ selected: true });
 };
 
 // conditionals that pass selected parameters to `showShirtSelection` on change
 // also includes default text for color field
 $("#design")
-  .change(function() {
+  .change(function () {
     if (this.value === "selectTheme") {
       allColorOptions.hide();
       colorDropDown.prepend(defaultColorText).attr({ disabled: true });
@@ -64,22 +61,19 @@ $("#design")
 
 //ACTIVITY SECTION
 //`disableCheckbox` adds disabled attribute and strickthrough class
-let disableCheckbox = activity => {
+let disableCheckbox = (activity) => {
   activity.attr({ disabled: true });
   activity.parent().addClass("strikethrough");
 };
 
 //`resetCheckbox` removes disabled attribute and strikethrough class
-let resetCheckbox = date => {
-  date
-    .removeAttr("disabled")
-    .parent()
-    .removeClass("strikethrough");
+let resetCheckbox = (date) => {
+  date.removeAttr("disabled").parent().removeClass("strikethrough");
 };
 
 //disables/resets conflicting activies for Tuesday 9-12 if selected
 tues9to12
-  .change(function() {
+  .change(function () {
     resetCheckbox(tues9to12);
     if (jsFrameworks.prop("checked")) {
       disableCheckbox(express);
@@ -91,7 +85,7 @@ tues9to12
 
 //disables/resets conflicting activies for Tuesday 1-4 if selected
 tues1to4
-  .change(function() {
+  .change(function () {
     resetCheckbox(tues1to4);
     if (node.prop("checked")) {
       disableCheckbox(jsLibraries);
@@ -103,25 +97,25 @@ tues1to4
 
 //bill total calculation
 let total = 0;
-$(allActivities).each(function() {
-  let cost = +$(this)
-    .data("cost")
-    .substring(1);
-  $(this).change(function() {
+$(allActivities).each(function () {
+  let cost = +$(this).data("cost").substring(1);
+  $(this).change(function () {
     $(this).prop("checked") ? (total += cost) : (total -= cost);
     $("#total").text(`$${total}`);
   });
 });
 
 //bill total appendage
-$(".activities").append(`<div>Total: <span id="total">$0</span></div>`);
+$(".activities").append(
+  `<div class='total'>Total: <span id="total">$0</span></div>`
+);
 
 //PAYMENT
 //payment info defaults to Credit Card
 //payment options show/hide based on payment selection
 selectPaymentMet.attr({ disabled: true });
 $("#payment")
-  .change(function() {
+  .change(function () {
     this.value == "Credit Card"
       ? (credCardFields.show(), bitcoin.hide(), paypal.hide())
       : credCardFields.hide();
@@ -137,18 +131,18 @@ $("#payment")
 //VALIDATIONS
 //flash error message function
 let flashErrorMessage = (form, message) => {
-  $(".reqForm").remove();
+  $(".req-form").remove();
   form.after(message);
 };
 
 //remove error message function
-let removeErrorMessage = form => {
-  $(".reqForm").remove();
+let removeErrorMessage = (form) => {
+  $(".req-form").remove();
 };
 
 //REGEX FUNCTIONS
 // email regex function
-let emailValidation = email => {
+let emailValidation = (email) => {
   let emailTest = new RegExp(
     /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
   );
@@ -156,19 +150,19 @@ let emailValidation = email => {
 };
 
 //credit card regex function
-let ccNumValidation = ccNum => {
+let ccNumValidation = (ccNum) => {
   let ccTest = new RegExp(/^[0-9]{13,16}$/);
   return ccTest.test(ccNum);
 };
 
 //zip regex function
-let zipValidation = zip => {
+let zipValidation = (zip) => {
   let zipTest = new RegExp(/^[0-9]{5}$/);
   return zipTest.test(zip);
 };
 
 //cvv regex function
-let cvvValidation = cvv => {
+let cvvValidation = (cvv) => {
   let cvvTest = new RegExp(/^[0-9]{3}$/);
   return cvvTest.test(cvv);
 };
@@ -215,7 +209,7 @@ let fieldValidate = () => {
         }
 
         // dynamically show and hide error messages based on added/removed class
-        const message = `<span class='reqForm'>${error}</span>`;
+        const message = `<span class='req-form'>${error}</span>`;
         valid
           ? (that.removeClass("invalid").addClass("valid"),
             removeErrorMessage(that))
@@ -227,12 +221,12 @@ let fieldValidate = () => {
 fieldValidate();
 
 //adds class of invalid to offending input forms
-let invalidateOnSubmit = form => {
+let invalidateOnSubmit = (form) => {
   form.addClass("invalid");
 };
 
 // form submission
-$("form").submit(e => {
+$("form").submit((e) => {
   e.preventDefault();
   let valid = true;
 
@@ -247,11 +241,7 @@ $("form").submit(e => {
     : ((valid = false), invalidateOnSubmit($("#mail")));
 
   //checks if 'other' job role is selected and has a value
-  if (
-    $("#title")
-      .val()
-      .toLowerCase() === "other"
-  ) {
+  if ($("#title").val().toLowerCase() === "other") {
     otherTxtInput.val()
       ? true
       : ((valid = false), invalidateOnSubmit($("#other-title")));
@@ -266,11 +256,7 @@ $("form").submit(e => {
       ));
 
   // if credit card option selected, user enters cc num, zip, and cvv
-  if (
-    $("#payment")
-      .val()
-      .toLowerCase() === "credit card"
-  ) {
+  if ($("#payment").val().toLowerCase() === "credit card") {
     ccNumValidation($("#cc-num").val())
       ? true
       : ((valid = false), invalidateOnSubmit($("#cc-num")));

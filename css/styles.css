@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  font-family: "Varela", sans-serif;
+  height: 100vh;
+  color: #312b39;
+}
+.container .left {
+  width: 50%;
+  height: 100vh;
+  overflow: hidden;
+}
+.container .left .left--photo {
+  width: 100%;
+}
+.container .right {
+  width: 50%;
+  background-color: #fefefe;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  overflow: auto;
+}
+.container .right header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container .right .form .fieldset {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.container .right .form .basic-container label {
+  margin-top: 1rem;
+}
+.container .right .form .basic-container .job-selector {
+  margin-bottom: 1rem;
+}
+.container .right .form .shirt-container div {
+  margin-top: 1rem;
+}
+.container .right .form .shirt-container div:last-child {
+  margin-bottom: 1rem;
+}
+.container .right .form .activities label {
+  margin-top: 1rem;
+}
+.container .right .form .activities .total {
+  margin: 1rem 0;
+}
+.container .right .form .payment-container label {
+  margin-top: 1rem;
+}
+.container .right .form .payment-container .payment-label {
+  margin-bottom: 0.5rem;
+}
+.container .right .form .payment-container div {
+  margin-top: 1rem;
+}
+.container .right .form .payment-container .credit-card-details {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+}
+.container .right .form .payment-container .expiration-container {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.container .right .register-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.container .right .register-container #register {
+  background-color: #fefefe;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 5px;
+  color: #312b39;
+  border: 2px solid #312b39;
+}
+.container .right .register-container #register:hover {
+  border-color: #febd47;
+  transition: all 0.3s ease-out;
+  color: #febd47;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+/*# sourceMappingURL=styles.css.map */
